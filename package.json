@@ -1,0 +1,22 @@
+{
+  "name": "utm-manager",
+  "version": "1.0.0",
+  "description": "Manange UTMs for companies",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-tibrewal/utm-manager.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A-tibrewal/utm-manager/issues"
+  },
+  "homepage": "https://github.com/A-tibrewal/utm-manager#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

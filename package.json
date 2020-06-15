@@ -4,6 +4,7 @@
   "description": "Manange UTMs for companies",
   "main": "server/app.js",
   "scripts": {
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,17 @@
   },
   "homepage": "https://github.com/A-tibrewal/utm-manager#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@handlebars/allow-prototype-access": "^1.0.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }

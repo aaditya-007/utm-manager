@@ -1,0 +1,24 @@
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Campaign Name</th>
+            <th>Medium</th>
+            <th>Source</th>
+            <th>Term</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each links}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.campaignName}}</td>
+            <td>{{this.medium}}</td>
+            <td>{{this.source}}</td>
+            <td>{{this.term}}</td>
+            <td>{{this.notes}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

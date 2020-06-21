@@ -1,9 +1,7 @@
-const Sequelize = require("sequelize").Sequelize;
 const { DataTypes } = require("sequelize");
-
 const sequelize = require("../util/database");
 
-const Link = sequelize.define("link", {
+const Templates = sequelize.define("templates", {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -14,18 +12,9 @@ const Link = sequelize.define("link", {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  shortUrl: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  baseUrl: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  clicks: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    defaultValue: 0
   },
   campaignName: {
     type: DataTypes.STRING,
@@ -53,4 +42,4 @@ const Link = sequelize.define("link", {
   }
 });
 
-module.exports = Link;
+module.exports = Templates;

@@ -7,6 +7,7 @@ const adminRoutes = require("./routes/admin");
 const userRouter = require("./routes/user");
 const leadRoutes = require("./routes/leads");
 const linkRoutes = require("./routes/links");
+const templateRoutes = require("./routes/templates");
 const errorController = require("./contollers/error");
 const homeController = require("./contollers/home");
 const {
@@ -31,7 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/admin", adminRoutes);
 app.use("/user", userRouter);
 app.use("/leads", leadRoutes);
-app.use("/link", linkRoutes);
+app.use("/links", linkRoutes);
+app.use('/templates', templateRoutes);
 app.get("/", homeController.getHome);
 app.use(errorController.get404);
 

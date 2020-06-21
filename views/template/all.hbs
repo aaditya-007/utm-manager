@@ -1,8 +1,8 @@
 <table class="ui fixed celled table">
     <thead>
         <tr>
+            <th>Name</th>
             <th>Campaign Name</th>
-            <th>Full Link</th>
             <th>Content</th>
             <th>Medium</th>
             <th>Source</th>
@@ -11,10 +11,10 @@
         </tr>
     </thead>
     <tbody>
-        {{#each links}}
+        {{#each templates}}
         <tr>
+            <td>{{this.name}}</td>
             <td>{{this.campaignName}}</td>
-            <td>{{this.fullLink}}</td>
             <td>{{this.content}}</td>
             <td>{{this.medium}}</td>
             <td>{{this.source}}</td>
@@ -25,17 +25,17 @@
     </tbody>
 </table>
 
-<button class="ui button blue" onclick="showModal()">Create Link</button>
+<button class="ui button blue" onclick="showModal()">Create Template</button>
 
 <div class="ui modal create-link-modal">
     <div class="header">Header</div>
     <div class="content">
-        <form method="POST" action="/links/create">
+        <form method="POST" action="/templates/create">
             <div class="ui form">
                 <div class="three fields">
                     <div class="field">
-                        <label>baseUrl</label>
-                        <input type="text" placeholder="base url" name="baseUrl">
+                        <label>Name</label>
+                        <input type="text" placeholder="Template Name" name="name">
                     </div>
                     <div class="field">
                         <label>Campaign Name</label>

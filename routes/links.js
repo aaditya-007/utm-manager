@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/create', linksController.storeLinks);
 router.get('/create', linksController.storeLinksPage);
-router.get('/all', linksController.getAllLinks);
+router.get('/', linksController.getAllLinks);
 
 module.exports = router;

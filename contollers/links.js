@@ -1,13 +1,13 @@
 const Link = require("../models/link");
 
 exports.getAllLinks = (req, res) => {
-  Link.findAll().then(links => {
-    const newLinks = links.map(link => {
+  Link.findAll().then((links) => {
+    const newLinks = links.map((link) => {
       const fullLink = `${link.baseUrl}?utm_source=${link.source}&utm_medium=${link.medium}&utm_content=${link.content}&utm_term=${link.term} `;
       link.fullLink = fullLink;
       return link;
     });
-    res.render("link/all", { links: newLinks });
+    res.json({ links: newLinks });
   });
 };
 
@@ -17,9 +17,19 @@ exports.storeLinksPage = (req, res) => {
 
 exports.storeLinks = (req, res) => {
   const body = req.body;
-
-  const { name, campaignName, medium, source, content, term, notes, baseUrl } = body;
+  const {
+    name,
+    campaignName,
+    medium,
+    source,
+    content,
+    term,
+    notes,
+    baseUrl,
+  } = body;
   console.log(name, campaignName, medium, source, content, term, notes);
+  console.log(body);
+
   Link.create({
     name: name,
     createdBy: 1312312,
@@ -30,11 +40,14 @@ exports.storeLinks = (req, res) => {
     term: term,
     notes: notes,
     shortUrl: "something",
-    baseUrl: baseUrl
+    baseUrl: baseUrl,
   })
     .then(() => {
       backURL = req.header("Referer") || "/";
-      res.redirect(backURL);
+      res.json({
+        status: "success",
+        message: "Link creates successfully",
+      });
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };

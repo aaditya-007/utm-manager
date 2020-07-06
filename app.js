@@ -11,7 +11,7 @@ const templateRoutes = require("./routes/templates");
 const errorController = require("./contollers/error");
 const homeController = require("./contollers/home");
 const {
-  allowInsecurePrototypeAccess
+  allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
 const port = 3000;
 
@@ -21,30 +21,30 @@ const baseDir = require("./util/path");
 app.engine(
   "hbs",
   expressHbs({
-    handlebars: allowInsecurePrototypeAccess(_handlebars)
+    handlebars: allowInsecurePrototypeAccess(_handlebars),
   })
 );
 app.set("view engine", "hbs");
 app.set("views", "views");
 
 app.use(express.static(baseDir + "/public"));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use("/admin", adminRoutes);
 app.use("/user", userRouter);
 app.use("/leads", leadRoutes);
 app.use("/links", linkRoutes);
-app.use('/templates', templateRoutes);
+app.use("/templates", templateRoutes);
 app.get("/", homeController.getHome);
 app.use(errorController.get404);
 
 sequelize
   .sync()
-  .then(result => {
+  .then((result) => {
     console.log(result);
     app.listen(port, () =>
       console.log(`Example app listening at http://localhost:${port}`)
     );
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });

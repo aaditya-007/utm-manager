@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "Manange UTMs for companies",
   "scripts": {
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js & webpack-dev-server --hot --mode development",
-    "start-client": "webpack-dev-server --hot --mode development",
-    "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "MIT",

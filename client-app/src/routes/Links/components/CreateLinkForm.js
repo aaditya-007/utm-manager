@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Input, InputNumber, Button } from "antd";
+import { Form, Input, Button } from "antd";
+import { API_HOST } from "../../../constants";
 
 const layout = {
   labelCol: {
@@ -24,7 +25,7 @@ const CreateLinkForm = () => {
   const onFinish = (values) => {
     const body = { ...values.link };
     console.log(body);
-    fetch("/links/create", {
+    fetch(`${API_HOST}/links/create`, {
       method: "POST",
       body: JSON.stringify({ ...values.link }),
       headers: {

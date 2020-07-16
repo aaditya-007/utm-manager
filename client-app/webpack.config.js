@@ -1,13 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
     'react-hot-loader/patch',
-    './client/src/index.js'
+    './src/index.js'
   ],
   output: {
-    path: path.resolve(__dirname, 'public/js/'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
@@ -51,8 +52,15 @@ const config = {
     }
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './dist'
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      appMountId: 'app',
+      filename: 'dist/index.html'
+    })
+  ]
 };
 
 module.exports = config;

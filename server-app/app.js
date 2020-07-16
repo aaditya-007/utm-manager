@@ -5,7 +5,6 @@ const expressHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/admin");
 const userRouter = require("./routes/user");
-const leadRoutes = require("./routes/leads");
 const linkRoutes = require("./routes/links");
 const templateRoutes = require("./routes/templates");
 const errorController = require("./contollers/error");
@@ -27,11 +26,17 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", "views");
 
+app.use((req,res, next) => {
+  res.setHeader('Access-Control-Allow-origin', '*');
+  res.setHeader('Access-Control-Allow-methods', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+})
+
 app.use(express.static(baseDir + "/public"));
 app.use(bodyParser.json());
 app.use("/admin", adminRoutes);
 app.use("/user", userRouter);
-app.use("/leads", leadRoutes);
 app.use("/links", linkRoutes);
 app.use("/templates", templateRoutes);
 app.get("/", homeController.getHome);

@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { GET_LINKS } from "../../../constants";
+import { Table } from "antd";
+import { columns } from '../constants';
 
 const AllLinks = () => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    fetch("/links")
-      .then((res) => res.json)
-      .then((json) => console.log(json));
-  });
+    fetch(GET_LINKS)
+      .then((res) => res.json())
+      .then((json) => setLinks(json.links || []));
+  }, []);
 
-  return <div>All Links</div>;
+
+
+  return (
+    <div>
+      <br/>
+      <Table dataSource={links} columns={columns} />
+    </div>
+  );
 };
 
 export default AllLinks;

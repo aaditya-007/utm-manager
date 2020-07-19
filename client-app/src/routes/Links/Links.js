@@ -10,10 +10,10 @@ const Links = () => {
     setVisible(true);
   };
 
-  const handleOk = (e) => {
-    console.log(e);
-    setVisible(false);
-  };
+  // const handleOk = (e) => {
+  //   console.log(e);
+  //   setVisible(false);
+  // };
 
   const handleCancel = (e) => {
     console.log(e);
@@ -26,9 +26,10 @@ const Links = () => {
         Create Link
       </Button>
       <Modal
-        title="Basic Modal"
+        title="New Link"
         visible={visible}
-        onOk={handleOk}
+        footer={null}
+        // onOk={handleOk}
         onCancel={handleCancel}
       >
         <CreateLinkForm />

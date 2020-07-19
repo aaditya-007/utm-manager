@@ -2,7 +2,7 @@ const Template = require("../models/template");
 
 exports.getAll = (req, res) => {
   Template.findAll().then(templates => {
-    res.render("template/all", { templates: templates });
+    res.json({ templates: templates });
   });
 };
 

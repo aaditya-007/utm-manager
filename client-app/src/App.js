@@ -1,27 +1,28 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Links from "./routes/Links";
-import Templates from "./routes/LinkTemplates";
-import Users from "./routes/Users";
-import { hot } from "react-hot-loader/root";
-import "antd/dist/antd.css";
-import "./base.css";
-import Main from "./layouts/Main";
-import store from "./store/index";
-import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Redirect,Switch } from "react-router-dom";
+import { connect } from "react-redux";
+//import { hot } from "react-hot-loader/root";
+import Home from './routes/home/landing'
+import Account from './routes/account'
+import SignIn from "./routes/Auth/signIn";
+import SignUp from "./routes/Auth/signup";
+const App = (props) => {
+console.log(props);
+   return( <Router>
+    
+     
+  <Switch>
+  {localStorage.token? <Route path="/profile"  component={Account}/>
+      : <Route exact path="/" component={Home} />}
+      <Route path="/signIn"  component={SignIn} />
+      <Route path="/signUp"  component={SignUp} />
+      <Redirect to="/" />
+      </Switch> 
+    </Router>)
+  
+   };
+const mapStatesToProps = (state) => ({
+  isAuthenticated: state.currentUser
+});
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
-      <Main>
-        <Switch>
-          <Route exact path="/links" component={Links} />
-          <Route path="/templates" component={Templates} />
-          <Route path="/users" component={Users} />
-        </Switch>
-      </Main>
-    </Router>
-  </Provider>
-);
-
-export default hot(App);
+export default connect(mapStatesToProps,null)(App);

@@ -5,34 +5,15 @@ const bcrypt = require("bcryptjs");
 const { Result } = require("antd");
 const jwt = require('jsonwebtoken');
 
-exports.signUp = (req, res, next) => {
-  const { email, name, password } = req.body;
-  bcrypt
-    .hash(password, 12)
-    .then((hasPwd) => {
-      const user = new User({
-        email: email,
-        password: hasPwd,
-        firstName: name,
-      });
-      return user.save();
-    })
-    .then((result) => {
-      res.status(201).json({
-        message: "User Created",
-        userId: result._id,
-      });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
-};
 
-exports.login = (req, res, next) => {
-  const { email, password } = req.body;
+
+
+exports.signin = (req, res, next) => {
+  
+  //console.log('be',req.body);
+
+  const { username:email, password } = req.body;
+  //console.log('loadedUser',email, password);
   User.findOne({
     where: { email: email },
   })
@@ -54,7 +35,7 @@ exports.login = (req, res, next) => {
             });
            };
 
-           console.log(loadedUser);
+           
            const token = jwt.sign({ 
              email: loadedUser.email,
              userId: loadedUser._id
@@ -69,4 +50,43 @@ exports.login = (req, res, next) => {
       }
     })
     .catch((err) => {});
+};
+
+
+exports.signup = (req, res, next) => {
+ // console.log(req.body);
+  const { email,name, password } = req.body;
+  User.findOne({
+    where: { email: email },
+  }).then(userInfo=>{
+    console.log("ui",userInfo);
+    if(userInfo){
+      console.log("email already registered!")
+      return res.send("emailError")
+    }
+    bcrypt
+    .hash(password, 12)
+    .then((hasPwd) => {
+      const user = new User({
+        email: email,
+        password: hasPwd,
+        Name: name
+      });
+      return user.save();
+    })
+    .then((result) => {
+      res.status(201).json({
+        message: "User Created",
+        userId: result.id,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+  }).catch((err) => {console.log(err)})
+  
+  
 };

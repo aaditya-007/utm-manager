@@ -2,11 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-router.post(
-  "/singup",
-  (req, res) => {
-    res.send("This is user from router;");
-  }
-);
+router.get("/auth", (req, res) => {
+  res.send("This auth from router;");
+});
 
 module.exports = router;

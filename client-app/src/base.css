@@ -6,6 +6,11 @@
   transition: color 0.3s;
 }
 
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
 #components-layout-demo-custom-trigger .trigger:hover {
   color: #1890ff;
 }

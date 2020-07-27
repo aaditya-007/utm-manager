@@ -26,13 +26,13 @@ const router = express.Router();
 
 router.post(
   "/signup",
-  userController.signUp
+  userController.signup
 );
 
 
 router.post(
-  "/login",
-  userController.login
+  "/signin",
+  userController.signin
 );
 
 module.exports = router;

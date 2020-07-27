@@ -21,15 +21,16 @@ const validateMessages = {
   },
 };
 const refreshPage = () => {
-  window.location.reload(false);
-}
-const CreateLinkForm = () => {
+    window.location.reload(false);
+  }
+const CreateTemplateForm= () => {
   const onFinish = (values) => {
-    const body = { ...values.link };
+    
+    const body = { ...values.template };
     console.log(body);
-    fetch(`${API_HOST}/links/create`, {
+    fetch(`${API_HOST}/templates/create`, {
       method: "POST",
-      body: JSON.stringify({ ...values.link }),
+      body: JSON.stringify({ ...values.template }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -47,8 +48,8 @@ const CreateLinkForm = () => {
       validateMessages={validateMessages}
     >
       <Form.Item
-        name={["link", "baseUrl"]}
-        label="Base Url"
+        name={["template", "name"]}
+        label="Template Name"
         rules={[
           {
             required: true,
@@ -58,7 +59,7 @@ const CreateLinkForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        name={["link", "campaignName"]}
+        name={["template", "campaignName"]}
         label="Campaign Name"
         rules={[
           {
@@ -68,19 +69,19 @@ const CreateLinkForm = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item name={["link", "medium"]} label="Medium">
+      <Form.Item name={["template", "medium"]} label="Medium">
         <Input />
       </Form.Item>
-      <Form.Item name={["link", "source"]} label="Source">
+      <Form.Item name={["template", "source"]} label="Source">
         <Input />
       </Form.Item>
-      <Form.Item name={["link", "content"]} label="Content">
+      <Form.Item name={["template", "content"]} label="Content">
         <Input />
       </Form.Item>
-      <Form.Item name={["link", "term"]} label="Term">
+      <Form.Item name={["template", "term"]} label="Term">
         <Input />
       </Form.Item>
-      <Form.Item name={["link", "notes"]} label="Notes">
+      <Form.Item name={["template", "notes"]} label="Notes">
         <Input.TextArea />
       </Form.Item>
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -92,4 +93,4 @@ const CreateLinkForm = () => {
   );
 };
 
-export default CreateLinkForm;
+export default CreateTemplateForm;

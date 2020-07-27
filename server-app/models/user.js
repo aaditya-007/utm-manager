@@ -17,14 +17,10 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  firstName: {
+  Name: {
     type: Sequelize.STRING,
     allowNull: true,
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: true,
-  },
+  }
 });
 
 module.exports = User;

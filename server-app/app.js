@@ -9,6 +9,7 @@ const linkRoutes = require("./routes/links");
 const templateRoutes = require("./routes/templates");
 const errorController = require("./contollers/error");
 const homeController = require("./contollers/home");
+//const dotenv = require('dotenv').config();
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
@@ -32,7 +33,7 @@ app.use((req,res, next) => {
   res.setHeader('Access-Control-Allow-Headers', '*');
   next();
 })
-
+//console.log("****",process.env)
 app.use(express.static(baseDir + "/public"));
 app.use(bodyParser.json());
 app.use("/admin", adminRoutes);

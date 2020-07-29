@@ -6,6 +6,8 @@ import Home from './routes/home/landing'
 import Account from './routes/account'
 import SignIn from "./routes/Auth/signIn";
 import SignUp from "./routes/Auth/signup";
+import ResetPass from "./routes/Auth/resetPass";
+import NewPassword from "./routes/Auth/newPassword";
 const App = (props) => {
 console.log(props);
    return( <Router>
@@ -16,6 +18,8 @@ console.log(props);
       : <Route exact path="/" component={Home} />}
       <Route path="/signIn"  component={SignIn} />
       <Route path="/signUp"  component={SignUp} />
+      <Route path="/reset" exact component={ResetPass} />
+      <Route path="/reset/:user/:token" exact component={NewPassword} />
       <Redirect to="/" />
       </Switch> 
     </Router>)

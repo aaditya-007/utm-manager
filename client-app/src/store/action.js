@@ -53,9 +53,22 @@ export const userPostFetch = user => {
   }
 
   export const logoutUser=()=>{
-  
-    dispatch({
-      type: 'LOGOUT_USER'
-  })
+    dispatch({type: 'LOGOUT_USER'})
+  }
 
+  export const resetPassword = email =>{
+    console.log('reset')
+    return dispatch => {
+      return axios.post(`${GET_AUTH}/email`,email).
+      then(res=>res).catch(err=>console.log(err))
+    }
+  }
+
+  export const newPassword = data =>{
+    console.log("v",data);
+  
+    return dispatch => {
+      return axios.post(`${GET_AUTH}/newPass`,data).
+      then(res=>res).catch(err=>console.log(err))
+    }
   }

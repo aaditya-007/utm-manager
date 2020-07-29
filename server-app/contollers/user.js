@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 
 
 
+
 exports.signin = (req, res, next) => {
   
   //console.log('be',req.body);
@@ -87,6 +88,4 @@ exports.signup = (req, res, next) => {
       next(err);
     });
   }).catch((err) => {console.log(err)})
-  
-  
 };
